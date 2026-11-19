@@ -7,7 +7,7 @@ REST API blog multi-tier + AI generator (Search Engine + OpenAI). Port default *
 cp .env.example .env          # sesuaikan DB & OPENAI_KEY / OPENAI_MODEL
 psql -U postgres -c "CREATE DATABASE pabwe_p9_blog;"
 go mod tidy                   # sekali saja, lalu commit go.sum
-go run ./cmd/server
+go run cmd/server/main.go
 ```
 Swagger UI: http://localhost:8081/swagger/index.html
 
@@ -18,6 +18,8 @@ go test -v -cover ./internal/... ./docs/...
 
 ## Build
 ```bash
-CGO_ENABLED=0 go build -ldflags="-s -w" -o server ./cmd/server
+CGO_ENABLED=0 go build -ldflags="-s -w" -o server.exe cmd/server/main.go
 ```
 Akun seeder: `admin/admin` (admin), `member/member` (member).
+
+Entry point `main.go` di root juga disediakan agar platform deployment yang menjalankan `go build -o server .` dapat membangun source ini.
