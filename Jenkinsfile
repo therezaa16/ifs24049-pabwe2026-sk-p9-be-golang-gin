@@ -89,7 +89,7 @@ pipeline {
                     set -e
 
                     echo "=== Running Go Tests with Statement Coverage ==="
-                    go test -v -coverprofile=coverage.out -covermode=atomic ./internal/... ./docs/...
+                    go test -v -coverprofile=coverage.out -covermode=atomic ./...
 
                     echo "=== Coverage Summary by Function ==="
                     go tool cover -func=coverage.out
@@ -130,7 +130,7 @@ pipeline {
                     set -e
 
                     echo "=== Compiling Standalone Linux Binary ==="
-                    CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o server ./cmd/server
+                    CGO_ENABLED=0 GOOS=linux go build -ldflags="-s -w" -o server .
 
                     echo "=== Binary Created ==="
                     ls -lh server
