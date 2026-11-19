@@ -1,0 +1,15 @@
+# Biner hasil build (diawali "/" agar internal/server/ TIDAK ikut terabaikan)
+/server
+/main
+/app
+/server.exe
+*.exe
+*.test
+*.out
+*.prof
+.env
+.trivy-cache/
+trivy-results.sarif
+latest-app.zip
+.vscode/
+.idea/
